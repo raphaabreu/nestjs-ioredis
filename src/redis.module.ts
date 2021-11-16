@@ -3,10 +3,7 @@ import { RedisCluster } from './redis.cluster';
 import Redis, { ClusterNode, ClusterOptions } from 'ioredis';
 
 export class RedisModule {
-  static forRoot(
-    nodes?: ClusterNode[],
-    options?: ClusterOptions
-  ): DynamicModule {
+  static forRoot(nodes?: ClusterNode[], options?: ClusterOptions): DynamicModule {
     if (!nodes) {
       nodes = (process.env.REDIS || 'redis://localhost:6379').split(',');
     }

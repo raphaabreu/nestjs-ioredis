@@ -20,17 +20,14 @@ export class RedisCluster implements Redis.Cluster {
   }
   duplicate(
     overrideStartupNodes?: readonly Redis.ClusterNode[],
-    overrideOptions?: Redis.ClusterOptions
+    overrideOptions?: Redis.ClusterOptions,
   ): Redis.Cluster {
     throw new Error('Method not implemented.');
   }
   nodes(role?: Redis.NodeRole): Redis.Redis[] {
     throw new Error('Method not implemented.');
   }
-  addListener(
-    event: string | symbol,
-    listener: (...args: any[]) => void
-  ): this {
+  addListener(event: string | symbol, listener: (...args: any[]) => void): this {
     throw new Error('Method not implemented.');
   }
   on(event: string | symbol, listener: (...args: any[]) => void): this {
@@ -39,10 +36,7 @@ export class RedisCluster implements Redis.Cluster {
   once(event: string | symbol, listener: (...args: any[]) => void): this {
     throw new Error('Method not implemented.');
   }
-  removeListener(
-    event: string | symbol,
-    listener: (...args: any[]) => void
-  ): this {
+  removeListener(event: string | symbol, listener: (...args: any[]) => void): this {
     throw new Error('Method not implemented.');
   }
   off(event: string | symbol, listener: (...args: any[]) => void): this {
@@ -57,10 +51,10 @@ export class RedisCluster implements Redis.Cluster {
   getMaxListeners(): number {
     throw new Error('Method not implemented.');
   }
-  listeners(event: string | symbol): Function[] {
+  listeners(event: string | symbol): (() => void)[] {
     throw new Error('Method not implemented.');
   }
-  rawListeners(event: string | symbol): Function[] {
+  rawListeners(event: string | symbol): (() => void)[] {
     throw new Error('Method not implemented.');
   }
   emit(event: string | symbol, ...args: any[]): boolean {
@@ -69,16 +63,10 @@ export class RedisCluster implements Redis.Cluster {
   listenerCount(event: string | symbol): number {
     throw new Error('Method not implemented.');
   }
-  prependListener(
-    event: string | symbol,
-    listener: (...args: any[]) => void
-  ): this {
+  prependListener(event: string | symbol, listener: (...args: any[]) => void): this {
     throw new Error('Method not implemented.');
   }
-  prependOnceListener(
-    event: string | symbol,
-    listener: (...args: any[]) => void
-  ): this {
+  prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this {
     throw new Error('Method not implemented.');
   }
   eventNames(): (string | symbol)[] {
@@ -90,37 +78,20 @@ export class RedisCluster implements Redis.Cluster {
   createBuiltinCommand(commandName: string): {} {
     throw new Error('Method not implemented.');
   }
-  defineCommand(
-    name: string,
-    definition: { numberOfKeys?: number; lua?: string }
-  ): void {
+  defineCommand(name: string, definition: { numberOfKeys?: number; lua?: string }): void {
     throw new Error('Method not implemented.');
   }
   sendCommand(): void {
     throw new Error('Method not implemented.');
   }
   bitcount(key: Redis.KeyType, callback: Redis.Callback<number>): void;
-  bitcount(
-    key: Redis.KeyType,
-    start: number,
-    end: number,
-    callback: (err: Error, res: number) => void
-  ): void;
+  bitcount(key: Redis.KeyType, start: number, end: number, callback: (err: Error, res: number) => void): void;
   bitcount(key: Redis.KeyType): Promise<number>;
   bitcount(key: Redis.KeyType, start: number, end: number): Promise<number>;
-  bitcount(
-    key: any,
-    start?: any,
-    end?: any,
-    callback?: any
-  ): void | Promise<number> {
+  bitcount(key: any, start?: any, end?: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  bitfield(
-    key: Redis.KeyType,
-    args: Redis.ValueType,
-    callback: Redis.Callback<number[]>
-  ): void;
+  bitfield(key: Redis.KeyType, args: Redis.ValueType, callback: Redis.Callback<number[]>): void;
   bitfield(key: Redis.KeyType, args: Redis.ValueType): Promise<number[]>;
   bitfield(key: any, args: any, callback?: any): void | Promise<number[]> {
     throw new Error('Method not implemented.');
@@ -145,25 +116,16 @@ export class RedisCluster implements Redis.Cluster {
     value: Redis.ValueType,
     expiryMode?: string | any[],
     time?: string | number,
-    setMode?: string | number
+    setMode?: string | number,
   ): Promise<'OK'>;
-  set(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    callback: Redis.Callback<'OK'>
-  ): void;
-  set(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    setMode: string | any[],
-    callback: Redis.Callback<'OK'>
-  ): void;
+  set(key: Redis.KeyType, value: Redis.ValueType, callback: Redis.Callback<'OK'>): void;
+  set(key: Redis.KeyType, value: Redis.ValueType, setMode: string | any[], callback: Redis.Callback<'OK'>): void;
   set(
     key: Redis.KeyType,
     value: Redis.ValueType,
     expiryMode: string,
     time: string | number,
-    callback: Redis.Callback<'OK'>
+    callback: Redis.Callback<'OK'>,
   ): void;
   set(
     key: Redis.KeyType,
@@ -171,16 +133,9 @@ export class RedisCluster implements Redis.Cluster {
     expiryMode: string,
     time: string | number,
     setMode: string | number,
-    callback: Redis.Callback<'OK'>
+    callback: Redis.Callback<'OK'>,
   ): void;
-  set(
-    key: any,
-    value: any,
-    expiryMode?: any,
-    time?: any,
-    setMode?: any,
-    callback?: any
-  ): void | Promise<'OK'> {
+  set(key: any, value: any, expiryMode?: any, time?: any, setMode?: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
   setBuffer(
@@ -188,25 +143,16 @@ export class RedisCluster implements Redis.Cluster {
     value: Redis.ValueType,
     expiryMode?: string | any[],
     time?: string | number,
-    setMode?: string | number
+    setMode?: string | number,
   ): Promise<Buffer>;
-  setBuffer(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    callback: Redis.Callback<Buffer>
-  ): void;
-  setBuffer(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    setMode: string,
-    callback: Redis.Callback<Buffer>
-  ): void;
+  setBuffer(key: Redis.KeyType, value: Redis.ValueType, callback: Redis.Callback<Buffer>): void;
+  setBuffer(key: Redis.KeyType, value: Redis.ValueType, setMode: string, callback: Redis.Callback<Buffer>): void;
   setBuffer(
     key: Redis.KeyType,
     value: Redis.ValueType,
     expiryMode: string,
     time: number,
-    callback: Redis.Callback<Buffer>
+    callback: Redis.Callback<Buffer>,
   ): void;
   setBuffer(
     key: Redis.KeyType,
@@ -214,77 +160,27 @@ export class RedisCluster implements Redis.Cluster {
     expiryMode: string,
     time: string | number,
     setMode: string | number,
-    callback: Redis.Callback<Buffer>
+    callback: Redis.Callback<Buffer>,
   ): void;
-  setBuffer(
-    key: any,
-    value: any,
-    expiryMode?: any,
-    time?: any,
-    setMode?: any,
-    callback?: any
-  ): void | Promise<Buffer> {
+  setBuffer(key: any, value: any, expiryMode?: any, time?: any, setMode?: any, callback?: any): void | Promise<Buffer> {
     throw new Error('Method not implemented.');
   }
-  setnx(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
-  setnx(
-    key: Redis.KeyType,
-    value: Redis.ValueType
-  ): Promise<Redis.BooleanResponse>;
-  setnx(
-    key: any,
-    value: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  setnx(key: Redis.KeyType, value: Redis.ValueType, callback: Redis.Callback<Redis.BooleanResponse>): void;
+  setnx(key: Redis.KeyType, value: Redis.ValueType): Promise<Redis.BooleanResponse>;
+  setnx(key: any, value: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  setex(
-    key: Redis.KeyType,
-    seconds: number,
-    value: Redis.ValueType,
-    callback: Redis.Callback<'OK'>
-  ): void;
-  setex(
-    key: Redis.KeyType,
-    seconds: number,
-    value: Redis.ValueType
-  ): Promise<'OK'>;
-  setex(
-    key: any,
-    seconds: any,
-    value: any,
-    callback?: any
-  ): void | Promise<'OK'> {
+  setex(key: Redis.KeyType, seconds: number, value: Redis.ValueType, callback: Redis.Callback<'OK'>): void;
+  setex(key: Redis.KeyType, seconds: number, value: Redis.ValueType): Promise<'OK'>;
+  setex(key: any, seconds: any, value: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
-  psetex(
-    key: Redis.KeyType,
-    milliseconds: number,
-    value: Redis.ValueType,
-    callback: Redis.Callback<'OK'>
-  ): void;
-  psetex(
-    key: Redis.KeyType,
-    milliseconds: number,
-    value: Redis.ValueType
-  ): Promise<'OK'>;
-  psetex(
-    key: any,
-    milliseconds: any,
-    value: any,
-    callback?: any
-  ): void | Promise<'OK'> {
+  psetex(key: Redis.KeyType, milliseconds: number, value: Redis.ValueType, callback: Redis.Callback<'OK'>): void;
+  psetex(key: Redis.KeyType, milliseconds: number, value: Redis.ValueType): Promise<'OK'>;
+  psetex(key: any, milliseconds: any, value: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
-  append(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    callback: Redis.Callback<number>
-  ): void;
+  append(key: Redis.KeyType, value: Redis.ValueType, callback: Redis.Callback<number>): void;
   append(key: Redis.KeyType, value: Redis.ValueType): Promise<number>;
   append(key: any, value: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
@@ -301,100 +197,34 @@ export class RedisCluster implements Redis.Cluster {
   exists(key?: any, callback?: any, ...rest: any[]): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  setbit(
-    key: Redis.KeyType,
-    offset: number,
-    value: Redis.ValueType,
-    callback: Redis.Callback<number>
-  ): void;
-  setbit(
-    key: Redis.KeyType,
-    offset: number,
-    value: Redis.ValueType
-  ): Promise<number>;
-  setbit(
-    key: any,
-    offset: any,
-    value: any,
-    callback?: any
-  ): void | Promise<number> {
+  setbit(key: Redis.KeyType, offset: number, value: Redis.ValueType, callback: Redis.Callback<number>): void;
+  setbit(key: Redis.KeyType, offset: number, value: Redis.ValueType): Promise<number>;
+  setbit(key: any, offset: any, value: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  getbit(
-    key: Redis.KeyType,
-    offset: number,
-    callback: Redis.Callback<number>
-  ): void;
+  getbit(key: Redis.KeyType, offset: number, callback: Redis.Callback<number>): void;
   getbit(key: Redis.KeyType, offset: number): Promise<number>;
   getbit(key: any, offset: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  setrange(
-    key: Redis.KeyType,
-    offset: number,
-    value: Redis.ValueType,
-    callback: Redis.Callback<number>
-  ): void;
-  setrange(
-    key: Redis.KeyType,
-    offset: number,
-    value: Redis.ValueType
-  ): Promise<number>;
-  setrange(
-    key: any,
-    offset: any,
-    value: any,
-    callback?: any
-  ): void | Promise<number> {
+  setrange(key: Redis.KeyType, offset: number, value: Redis.ValueType, callback: Redis.Callback<number>): void;
+  setrange(key: Redis.KeyType, offset: number, value: Redis.ValueType): Promise<number>;
+  setrange(key: any, offset: any, value: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  getrange(
-    key: Redis.KeyType,
-    start: number,
-    end: number,
-    callback: Redis.Callback<string>
-  ): void;
+  getrange(key: Redis.KeyType, start: number, end: number, callback: Redis.Callback<string>): void;
   getrange(key: Redis.KeyType, start: number, end: number): Promise<string>;
-  getrange(
-    key: any,
-    start: any,
-    end: any,
-    callback?: any
-  ): void | Promise<string> {
+  getrange(key: any, start: any, end: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
-  getrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    end: number,
-    callback: Redis.Callback<Buffer>
-  ): void;
-  getrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    end: number
-  ): Promise<Buffer>;
-  getrangeBuffer(
-    key: any,
-    start: any,
-    end: any,
-    callback?: any
-  ): void | Promise<Buffer> {
+  getrangeBuffer(key: Redis.KeyType, start: number, end: number, callback: Redis.Callback<Buffer>): void;
+  getrangeBuffer(key: Redis.KeyType, start: number, end: number): Promise<Buffer>;
+  getrangeBuffer(key: any, start: any, end: any, callback?: any): void | Promise<Buffer> {
     throw new Error('Method not implemented.');
   }
-  substr(
-    key: Redis.KeyType,
-    start: number,
-    end: number,
-    callback: Redis.Callback<string>
-  ): void;
+  substr(key: Redis.KeyType, start: number, end: number, callback: Redis.Callback<string>): void;
   substr(key: Redis.KeyType, start: number, end: number): Promise<string>;
-  substr(
-    key: any,
-    start: any,
-    end: any,
-    callback?: any
-  ): void | Promise<string> {
+  substr(key: any, start: any, end: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
   incr(key: Redis.KeyType, callback: Redis.Callback<number>): void;
@@ -419,60 +249,27 @@ export class RedisCluster implements Redis.Cluster {
     direction: 'BEFORE' | 'AFTER',
     pivot: string,
     value: Redis.ValueType,
-    callback: Redis.Callback<number>
+    callback: Redis.Callback<number>,
   ): void;
-  linsert(
-    key: Redis.KeyType,
-    direction: 'BEFORE' | 'AFTER',
-    pivot: string,
-    value: Redis.ValueType
-  ): Promise<number>;
-  linsert(
-    key: any,
-    direction: any,
-    pivot: any,
-    value: any,
-    callback?: any
-  ): void | Promise<number> {
+  linsert(key: Redis.KeyType, direction: 'BEFORE' | 'AFTER', pivot: string, value: Redis.ValueType): Promise<number>;
+  linsert(key: any, direction: any, pivot: any, value: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
   rpop(key: Redis.KeyType, callback: Redis.Callback<string>): void;
   rpop(key: Redis.KeyType): Promise<string>;
-  rpop(
-    key: Redis.KeyType,
-    count: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  rpop(key: Redis.KeyType, count: number, callback: Redis.Callback<string[]>): void;
   rpop(key: Redis.KeyType, count: number): Promise<string[]>;
-  rpop(
-    key: any,
-    count?: any,
-    callback?: any
-  ): void | Promise<string> | Promise<string[]> {
+  rpop(key: any, count?: any, callback?: any): void | Promise<string> | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
   lpop(key: Redis.KeyType, callback: Redis.Callback<string>): void;
   lpop(key: Redis.KeyType): Promise<string>;
-  lpop(
-    key: Redis.KeyType,
-    count: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  lpop(key: Redis.KeyType, count: number, callback: Redis.Callback<string[]>): void;
   lpop(key: Redis.KeyType, count: number): Promise<string[]>;
-  lpop(
-    key: any,
-    count?: any,
-    callback?: any
-  ): void | Promise<string> | Promise<string[]> {
+  lpop(key: any, count?: any, callback?: any): void | Promise<string> | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  lpos(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    rank?: number,
-    count?: number,
-    maxlen?: number
-  ): Promise<number> {
+  lpos(key: Redis.KeyType, value: Redis.ValueType, rank?: number, count?: number, maxlen?: number): Promise<number> {
     throw new Error('Method not implemented.');
   }
   lpopBuffer(key: Redis.KeyType, callback: Redis.Callback<Buffer>): void;
@@ -482,23 +279,9 @@ export class RedisCluster implements Redis.Cluster {
   }
   brpop: Redis.OverloadedBlockingListCommand<Redis.KeyType, [string, string]>;
   blpop: Redis.OverloadedBlockingListCommand<Redis.KeyType, [string, string]>;
-  brpoplpush(
-    source: string,
-    destination: string,
-    timeout: number,
-    callback: Redis.Callback<string>
-  ): void;
-  brpoplpush(
-    source: string,
-    destination: string,
-    timeout: number
-  ): Promise<string>;
-  brpoplpush(
-    source: any,
-    destination: any,
-    timeout: any,
-    callback?: any
-  ): void | Promise<string> {
+  brpoplpush(source: string, destination: string, timeout: number, callback: Redis.Callback<string>): void;
+  brpoplpush(source: string, destination: string, timeout: number): Promise<string>;
+  brpoplpush(source: any, destination: any, timeout: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
   llen(key: Redis.KeyType, callback: Redis.Callback<number>): void;
@@ -506,156 +289,59 @@ export class RedisCluster implements Redis.Cluster {
   llen(key: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  lindex(
-    key: Redis.KeyType,
-    index: number,
-    callback: Redis.Callback<string>
-  ): void;
+  lindex(key: Redis.KeyType, index: number, callback: Redis.Callback<string>): void;
   lindex(key: Redis.KeyType, index: number): Promise<string>;
   lindex(key: any, index: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
-  lset(
-    key: Redis.KeyType,
-    index: number,
-    value: Redis.ValueType,
-    callback: Redis.Callback<'OK'>
-  ): void;
-  lset(
-    key: Redis.KeyType,
-    index: number,
-    value: Redis.ValueType
-  ): Promise<'OK'>;
+  lset(key: Redis.KeyType, index: number, value: Redis.ValueType, callback: Redis.Callback<'OK'>): void;
+  lset(key: Redis.KeyType, index: number, value: Redis.ValueType): Promise<'OK'>;
   lset(key: any, index: any, value: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
-  lrange(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  lrange(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<string[]>): void;
   lrange(key: Redis.KeyType, start: number, stop: number): Promise<string[]>;
-  lrange(
-    key: any,
-    start: any,
-    stop: any,
-    callback?: any
-  ): void | Promise<string[]> {
+  lrange(key: any, start: any, stop: any, callback?: any): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  lrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<Buffer[]>
-  ): void;
-  lrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    stop: number
-  ): Promise<Buffer[]>;
-  lrangeBuffer(
-    key: any,
-    start: any,
-    stop: any,
-    callback?: any
-  ): void | Promise<Buffer[]> {
+  lrangeBuffer(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<Buffer[]>): void;
+  lrangeBuffer(key: Redis.KeyType, start: number, stop: number): Promise<Buffer[]>;
+  lrangeBuffer(key: any, start: any, stop: any, callback?: any): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
-  ltrim(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<'OK'>
-  ): void;
+  ltrim(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<'OK'>): void;
   ltrim(key: Redis.KeyType, start: number, stop: number): Promise<'OK'>;
   ltrim(key: any, start: any, stop: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
-  lrem(
-    key: Redis.KeyType,
-    count: number,
-    value: Redis.ValueType,
-    callback: Redis.Callback<number>
-  ): void;
-  lrem(
-    key: Redis.KeyType,
-    count: number,
-    value: Redis.ValueType
-  ): Promise<number>;
-  lrem(
-    key: any,
-    count: any,
-    value: any,
-    callback?: any
-  ): void | Promise<number> {
+  lrem(key: Redis.KeyType, count: number, value: Redis.ValueType, callback: Redis.Callback<number>): void;
+  lrem(key: Redis.KeyType, count: number, value: Redis.ValueType): Promise<number>;
+  lrem(key: any, count: any, value: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  rpoplpush(
-    source: string,
-    destination: string,
-    callback: Redis.Callback<string>
-  ): void;
+  rpoplpush(source: string, destination: string, callback: Redis.Callback<string>): void;
   rpoplpush(source: string, destination: string): Promise<string>;
-  rpoplpush(
-    source: any,
-    destination: any,
-    callback?: any
-  ): void | Promise<string> {
+  rpoplpush(source: any, destination: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
-  rpoplpushBuffer(
-    source: string,
-    destination: string,
-    callback: Redis.Callback<Buffer>
-  ): void;
+  rpoplpushBuffer(source: string, destination: string, callback: Redis.Callback<Buffer>): void;
   rpoplpushBuffer(source: string, destination: string): Promise<Buffer>;
-  rpoplpushBuffer(
-    source: any,
-    destination: any,
-    callback?: any
-  ): void | Promise<Buffer> {
+  rpoplpushBuffer(source: any, destination: any, callback?: any): void | Promise<Buffer> {
     throw new Error('Method not implemented.');
   }
   sadd: Redis.OverloadedKeyCommand<Redis.ValueType, number>;
   srem: Redis.OverloadedKeyCommand<Redis.ValueType, number>;
-  smove(
-    source: string,
-    destination: string,
-    member: string,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
-  smove(
-    source: string,
-    destination: string,
-    member: string
-  ): Promise<Redis.BooleanResponse>;
-  smove(
-    source: any,
-    destination: any,
-    member: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  smove(source: string, destination: string, member: string, callback: Redis.Callback<Redis.BooleanResponse>): void;
+  smove(source: string, destination: string, member: string): Promise<Redis.BooleanResponse>;
+  smove(source: any, destination: any, member: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  sismember(
-    key: Redis.KeyType,
-    member: string,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
+  sismember(key: Redis.KeyType, member: string, callback: Redis.Callback<Redis.BooleanResponse>): void;
   sismember(key: Redis.KeyType, member: string): Promise<Redis.BooleanResponse>;
-  sismember(
-    key: any,
-    member: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  sismember(key: any, member: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  smismember(
-    key: Redis.KeyType,
-    ...members: string[]
-  ): Promise<Redis.BooleanResponse[]> {
+  smismember(key: Redis.KeyType, ...members: string[]): Promise<Redis.BooleanResponse[]> {
     throw new Error('Method not implemented.');
   }
   scard(key: Redis.KeyType, callback: Redis.Callback<number>): void;
@@ -665,32 +351,16 @@ export class RedisCluster implements Redis.Cluster {
   }
   spop(key: Redis.KeyType, callback: Redis.Callback<string>): void;
   spop(key: Redis.KeyType): Promise<string>;
-  spop(
-    key: Redis.KeyType,
-    count: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  spop(key: Redis.KeyType, count: number, callback: Redis.Callback<string[]>): void;
   spop(key: Redis.KeyType, count: number): Promise<string[]>;
-  spop(
-    key: any,
-    count?: any,
-    callback?: any
-  ): void | Promise<string> | Promise<string[]> {
+  spop(key: any, count?: any, callback?: any): void | Promise<string> | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
   srandmember(key: Redis.KeyType, callback: Redis.Callback<string>): void;
   srandmember(key: Redis.KeyType): Promise<string>;
-  srandmember(
-    key: Redis.KeyType,
-    count: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  srandmember(key: Redis.KeyType, count: number, callback: Redis.Callback<string[]>): void;
   srandmember(key: Redis.KeyType, count: number): Promise<string[]>;
-  srandmember(
-    key: any,
-    count?: any,
-    callback?: any
-  ): void | Promise<string> | Promise<string[]> {
+  srandmember(key: any, count?: any, callback?: any): void | Promise<string> | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
   sinter: Redis.OverloadedListCommand<Redis.KeyType, string[]>;
@@ -705,245 +375,106 @@ export class RedisCluster implements Redis.Cluster {
     throw new Error('Method not implemented.');
   }
   zadd: Redis.OverloadedKeyCommand<number | Redis.KeyType, string | number>;
-  zaddBuffer(
-    key: Redis.KeyType,
-    score1: number,
-    member1: Buffer,
-    callback: Redis.Callback<string | number>
-  ): void;
-  zaddBuffer(
-    key: Redis.KeyType,
-    score1: number,
-    member1: Buffer
-  ): Promise<string | number>;
-  zaddBuffer(
-    key: any,
-    score1: any,
-    member1: any,
-    callback?: any
-  ): void | Promise<string | number> {
+  zaddBuffer(key: Redis.KeyType, score1: number, member1: Buffer, callback: Redis.Callback<string | number>): void;
+  zaddBuffer(key: Redis.KeyType, score1: number, member1: Buffer): Promise<string | number>;
+  zaddBuffer(key: any, score1: any, member1: any, callback?: any): void | Promise<string | number> {
     throw new Error('Method not implemented.');
   }
-  zincrby(
-    key: Redis.KeyType,
-    increment: number,
-    member: string,
-    callback: Redis.Callback<string>
-  ): void;
-  zincrby(
-    key: Redis.KeyType,
-    increment: number,
-    member: string
-  ): Promise<string>;
-  zincrby(
-    key: any,
-    increment: any,
-    member: any,
-    callback?: any
-  ): void | Promise<string> {
+  zincrby(key: Redis.KeyType, increment: number, member: string, callback: Redis.Callback<string>): void;
+  zincrby(key: Redis.KeyType, increment: number, member: string): Promise<string>;
+  zincrby(key: any, increment: any, member: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
   zpopmin(key: Redis.KeyType, callback: Redis.Callback<string[]>): void;
-  zpopmin(
-    key: Redis.KeyType,
-    count: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  zpopmin(key: Redis.KeyType, count: number, callback: Redis.Callback<string[]>): void;
   zpopmin(key: Redis.KeyType, count?: number): Promise<string[]>;
   zpopmin(key: any, count?: any, callback?: any): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
   zpopmax(key: Redis.KeyType, callback: Redis.Callback<string[]>): void;
-  zpopmax(
-    key: Redis.KeyType,
-    count: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  zpopmax(key: Redis.KeyType, count: number, callback: Redis.Callback<string[]>): void;
   zpopmax(key: Redis.KeyType, count?: number): Promise<string[]>;
   zpopmax(key: any, count?: any, callback?: any): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  bzpopmin: Redis.OverloadedBlockingListCommand<
-    Redis.KeyType,
-    [string, string, string]
-  >;
-  bzpopmax: Redis.OverloadedBlockingListCommand<
-    Redis.KeyType,
-    [string, string, string]
-  >;
+  bzpopmin: Redis.OverloadedBlockingListCommand<Redis.KeyType, [string, string, string]>;
+  bzpopmax: Redis.OverloadedBlockingListCommand<Redis.KeyType, [string, string, string]>;
   zrem: Redis.OverloadedKeyCommand<Redis.ValueType, number>;
   zremrangebyscore(
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
-    callback: Redis.Callback<number>
+    callback: Redis.Callback<number>,
   ): void;
-  zremrangebyscore(
-    key: Redis.KeyType,
-    min: string | number,
-    max: string | number
-  ): Promise<number>;
-  zremrangebyscore(
-    key: any,
-    min: any,
-    max: any,
-    callback?: any
-  ): void | Promise<number> {
+  zremrangebyscore(key: Redis.KeyType, min: string | number, max: string | number): Promise<number>;
+  zremrangebyscore(key: any, min: any, max: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  zremrangebyrank(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<number>
-  ): void;
-  zremrangebyrank(
-    key: Redis.KeyType,
-    start: number,
-    stop: number
-  ): Promise<number>;
-  zremrangebyrank(
-    key: any,
-    start: any,
-    stop: any,
-    callback?: any
-  ): void | Promise<number> {
+  zremrangebyrank(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<number>): void;
+  zremrangebyrank(key: Redis.KeyType, start: number, stop: number): Promise<number>;
+  zremrangebyrank(key: any, start: any, stop: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
   zremrangebylex(key: Redis.KeyType, min: string, max: string): Promise<number>;
-  zremrangebylex(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    callback: Redis.Callback<number>
-  ): void;
-  zremrangebylex(
-    key: any,
-    min: any,
-    max: any,
-    callback?: any
-  ): void | Promise<number> {
+  zremrangebylex(key: Redis.KeyType, min: string, max: string, callback: Redis.Callback<number>): void;
+  zremrangebylex(key: any, min: any, max: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
   zunionstore: Redis.OverloadedKeyCommand<number | Redis.KeyType, number>;
   zinterstore: Redis.OverloadedKeyCommand<number | Redis.KeyType, number>;
-  zrange(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  zrange(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<string[]>): void;
   zrange(
     key: Redis.KeyType,
     start: number,
     stop: number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
-  zrange(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    withScores?: 'WITHSCORES'
-  ): Promise<string[]>;
-  zrange(
-    key: any,
-    start: any,
-    stop: any,
-    withScores?: any,
-    callback?: any
-  ): void | Promise<string[]> {
+  zrange(key: Redis.KeyType, start: number, stop: number, withScores?: 'WITHSCORES'): Promise<string[]>;
+  zrange(key: any, start: any, stop: any, withScores?: any, callback?: any): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  zrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<Buffer[]>
-  ): void;
+  zrangeBuffer(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<Buffer[]>): void;
   zrangeBuffer(
     key: Redis.KeyType,
     start: number,
     stop: number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
-  zrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    withScores?: 'WITHSCORES'
-  ): Promise<Buffer[]>;
-  zrangeBuffer(
-    key: any,
-    start: any,
-    stop: any,
-    withScores?: any,
-    callback?: any
-  ): void | Promise<Buffer[]> {
+  zrangeBuffer(key: Redis.KeyType, start: number, stop: number, withScores?: 'WITHSCORES'): Promise<Buffer[]>;
+  zrangeBuffer(key: any, start: any, stop: any, withScores?: any, callback?: any): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
-  zrevrange(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<string[]>
-  ): void;
+  zrevrange(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<string[]>): void;
   zrevrange(
     key: Redis.KeyType,
     start: number,
     stop: number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
-  zrevrange(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    withScores?: 'WITHSCORES'
-  ): Promise<string[]>;
-  zrevrange(
-    key: any,
-    start: any,
-    stop: any,
-    withScores?: any,
-    callback?: any
-  ): void | Promise<string[]> {
+  zrevrange(key: Redis.KeyType, start: number, stop: number, withScores?: 'WITHSCORES'): Promise<string[]>;
+  zrevrange(key: any, start: any, stop: any, withScores?: any, callback?: any): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  zrevrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    callback: Redis.Callback<Buffer[]>
-  ): void;
+  zrevrangeBuffer(key: Redis.KeyType, start: number, stop: number, callback: Redis.Callback<Buffer[]>): void;
   zrevrangeBuffer(
     key: Redis.KeyType,
     start: number,
     stop: number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
-  zrevrangeBuffer(
-    key: Redis.KeyType,
-    start: number,
-    stop: number,
-    withScores?: 'WITHSCORES'
-  ): Promise<Buffer[]>;
-  zrevrangeBuffer(
-    key: any,
-    start: any,
-    stop: any,
-    withScores?: any,
-    callback?: any
-  ): void | Promise<Buffer[]> {
+  zrevrangeBuffer(key: Redis.KeyType, start: number, stop: number, withScores?: 'WITHSCORES'): Promise<Buffer[]>;
+  zrevrangeBuffer(key: any, start: any, stop: any, withScores?: any, callback?: any): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
   zrangebyscore(
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
-    withScores?: 'WITHSCORES'
+    withScores?: 'WITHSCORES',
   ): Promise<string[]>;
   zrangebyscore(
     key: Redis.KeyType,
@@ -952,7 +483,7 @@ export class RedisCluster implements Redis.Cluster {
     withScores: 'WITHSCORES',
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<string[]>;
   zrangebyscore(
     key: Redis.KeyType,
@@ -960,20 +491,20 @@ export class RedisCluster implements Redis.Cluster {
     max: string | number,
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<string[]>;
   zrangebyscore(
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrangebyscore(
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrangebyscore(
     key: Redis.KeyType,
@@ -983,7 +514,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrangebyscore(
     key: Redis.KeyType,
@@ -992,7 +523,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrangebyscore(
     key: any,
@@ -1002,7 +533,7 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
@@ -1010,7 +541,7 @@ export class RedisCluster implements Redis.Cluster {
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
-    withScores?: 'WITHSCORES'
+    withScores?: 'WITHSCORES',
   ): Promise<Buffer[]>;
   zrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1019,7 +550,7 @@ export class RedisCluster implements Redis.Cluster {
     withScores: 'WITHSCORES',
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<Buffer[]>;
   zrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1027,20 +558,20 @@ export class RedisCluster implements Redis.Cluster {
     max: string | number,
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<Buffer[]>;
   zrangebyscoreBuffer(
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrangebyscoreBuffer(
     key: Redis.KeyType,
     min: string | number,
     max: string | number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1050,7 +581,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1059,7 +590,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrangebyscoreBuffer(
     key: any,
@@ -1069,7 +600,7 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
@@ -1077,7 +608,7 @@ export class RedisCluster implements Redis.Cluster {
     key: Redis.KeyType,
     max: string | number,
     min: string | number,
-    withScores?: 'WITHSCORES'
+    withScores?: 'WITHSCORES',
   ): Promise<string[]>;
   zrevrangebyscore(
     key: Redis.KeyType,
@@ -1086,7 +617,7 @@ export class RedisCluster implements Redis.Cluster {
     withScores: 'WITHSCORES',
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<string[]>;
   zrevrangebyscore(
     key: Redis.KeyType,
@@ -1094,20 +625,20 @@ export class RedisCluster implements Redis.Cluster {
     min: string | number,
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<string[]>;
   zrevrangebyscore(
     key: Redis.KeyType,
     max: string | number,
     min: string | number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrevrangebyscore(
     key: Redis.KeyType,
     max: string | number,
     min: string | number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrevrangebyscore(
     key: Redis.KeyType,
@@ -1117,7 +648,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrevrangebyscore(
     key: Redis.KeyType,
@@ -1126,7 +657,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrevrangebyscore(
     key: any,
@@ -1136,7 +667,7 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
@@ -1144,7 +675,7 @@ export class RedisCluster implements Redis.Cluster {
     key: Redis.KeyType,
     max: string | number,
     min: string | number,
-    withScores?: 'WITHSCORES'
+    withScores?: 'WITHSCORES',
   ): Promise<Buffer[]>;
   zrevrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1153,7 +684,7 @@ export class RedisCluster implements Redis.Cluster {
     withScores: 'WITHSCORES',
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<Buffer[]>;
   zrevrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1161,20 +692,20 @@ export class RedisCluster implements Redis.Cluster {
     min: string | number,
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<Buffer[]>;
   zrevrangebyscoreBuffer(
     key: Redis.KeyType,
     max: string | number,
     min: string | number,
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrevrangebyscoreBuffer(
     key: Redis.KeyType,
     max: string | number,
     min: string | number,
     withScores: 'WITHSCORES',
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrevrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1184,7 +715,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrevrangebyscoreBuffer(
     key: Redis.KeyType,
@@ -1193,7 +724,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<Buffer[]>
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrevrangebyscoreBuffer(
     key: any,
@@ -1203,7 +734,7 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
@@ -1214,14 +745,9 @@ export class RedisCluster implements Redis.Cluster {
     max: string,
     limit: 'LIMIT',
     offset: number,
-    count: number
+    count: number,
   ): Promise<string[]>;
-  zrangebylex(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    callback: Redis.Callback<string[]>
-  ): void;
+  zrangebylex(key: Redis.KeyType, min: string, max: string, callback: Redis.Callback<string[]>): void;
   zrangebylex(
     key: Redis.KeyType,
     min: string,
@@ -1229,7 +755,7 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   zrangebylex(
     key: any,
@@ -1238,29 +764,11 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  zrangebylexBuffer(
-    key: Redis.KeyType,
-    min: string,
-    max: string
-  ): Promise<Buffer[]>;
-  zrangebylexBuffer(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    limit: 'LIMIT',
-    offset: number,
-    count: number
-  ): Promise<Buffer[]>;
-  zrangebylexBuffer(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    callback: Redis.Callback<Buffer[]>
-  ): void;
+  zrangebylexBuffer(key: Redis.KeyType, min: string, max: string): Promise<Buffer[]>;
   zrangebylexBuffer(
     key: Redis.KeyType,
     min: string,
@@ -1268,7 +776,16 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<Buffer[]>
+  ): Promise<Buffer[]>;
+  zrangebylexBuffer(key: Redis.KeyType, min: string, max: string, callback: Redis.Callback<Buffer[]>): void;
+  zrangebylexBuffer(
+    key: Redis.KeyType,
+    min: string,
+    max: string,
+    limit: 'LIMIT',
+    offset: number,
+    count: number,
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrangebylexBuffer(
     key: any,
@@ -1277,29 +794,11 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
-  zrevrangebylex(
-    key: Redis.KeyType,
-    min: string,
-    max: string
-  ): Promise<string[]>;
-  zrevrangebylex(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    limit: 'LIMIT',
-    offset: number,
-    count: number
-  ): Promise<string[]>;
-  zrevrangebylex(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    callback: Redis.Callback<string[]>
-  ): void;
+  zrevrangebylex(key: Redis.KeyType, min: string, max: string): Promise<string[]>;
   zrevrangebylex(
     key: Redis.KeyType,
     min: string,
@@ -1307,7 +806,16 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<string[]>
+  ): Promise<string[]>;
+  zrevrangebylex(key: Redis.KeyType, min: string, max: string, callback: Redis.Callback<string[]>): void;
+  zrevrangebylex(
+    key: Redis.KeyType,
+    min: string,
+    max: string,
+    limit: 'LIMIT',
+    offset: number,
+    count: number,
+    callback: Redis.Callback<string[]>,
   ): void;
   zrevrangebylex(
     key: any,
@@ -1316,29 +824,11 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  zrevrangebylexBuffer(
-    key: Redis.KeyType,
-    min: string,
-    max: string
-  ): Promise<Buffer[]>;
-  zrevrangebylexBuffer(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    limit: 'LIMIT',
-    offset: number,
-    count: number
-  ): Promise<Buffer[]>;
-  zrevrangebylexBuffer(
-    key: Redis.KeyType,
-    min: string,
-    max: string,
-    callback: Redis.Callback<Buffer[]>
-  ): void;
+  zrevrangebylexBuffer(key: Redis.KeyType, min: string, max: string): Promise<Buffer[]>;
   zrevrangebylexBuffer(
     key: Redis.KeyType,
     min: string,
@@ -1346,7 +836,16 @@ export class RedisCluster implements Redis.Cluster {
     limit: 'LIMIT',
     offset: number,
     count: number,
-    callback: Redis.Callback<Buffer[]>
+  ): Promise<Buffer[]>;
+  zrevrangebylexBuffer(key: Redis.KeyType, min: string, max: string, callback: Redis.Callback<Buffer[]>): void;
+  zrevrangebylexBuffer(
+    key: Redis.KeyType,
+    min: string,
+    max: string,
+    limit: 'LIMIT',
+    offset: number,
+    count: number,
+    callback: Redis.Callback<Buffer[]>,
   ): void;
   zrevrangebylexBuffer(
     key: any,
@@ -1355,21 +854,12 @@ export class RedisCluster implements Redis.Cluster {
     limit?: any,
     offset?: any,
     count?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<Buffer[]> {
     throw new Error('Method not implemented.');
   }
-  zcount(
-    key: Redis.KeyType,
-    min: string | number,
-    max: string | number,
-    callback: Redis.Callback<number>
-  ): void;
-  zcount(
-    key: Redis.KeyType,
-    min: string | number,
-    max: string | number
-  ): Promise<number>;
+  zcount(key: Redis.KeyType, min: string | number, max: string | number, callback: Redis.Callback<number>): void;
+  zcount(key: Redis.KeyType, min: string | number, max: string | number): Promise<number>;
   zcount(key: any, min: any, max: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
@@ -1378,29 +868,17 @@ export class RedisCluster implements Redis.Cluster {
   zcard(key: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  zscore(
-    key: Redis.KeyType,
-    member: string,
-    callback: Redis.Callback<string>
-  ): void;
+  zscore(key: Redis.KeyType, member: string, callback: Redis.Callback<string>): void;
   zscore(key: Redis.KeyType, member: string): Promise<string>;
   zscore(key: any, member: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
-  zrank(
-    key: Redis.KeyType,
-    member: string,
-    callback: Redis.Callback<number>
-  ): void;
+  zrank(key: Redis.KeyType, member: string, callback: Redis.Callback<number>): void;
   zrank(key: Redis.KeyType, member: string): Promise<number>;
   zrank(key: any, member: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  zrevrank(
-    key: Redis.KeyType,
-    member: string,
-    callback: Redis.Callback<number>
-  ): void;
+  zrevrank(key: Redis.KeyType, member: string, callback: Redis.Callback<number>): void;
   zrevrank(key: Redis.KeyType, member: string): Promise<number>;
   zrevrank(key: any, member: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
@@ -1410,54 +888,28 @@ export class RedisCluster implements Redis.Cluster {
     key: Redis.KeyType,
     field: string,
     value: Redis.ValueType,
-    callback: Redis.Callback<Redis.BooleanResponse>
+    callback: Redis.Callback<Redis.BooleanResponse>,
   ): void;
-  hsetBuffer(
-    key: Redis.KeyType,
-    field: string,
-    value: Redis.ValueType
-  ): Promise<Buffer>;
-  hsetBuffer(
-    key: any,
-    field: any,
-    value: any,
-    callback?: any
-  ): void | Promise<Buffer> {
+  hsetBuffer(key: Redis.KeyType, field: string, value: Redis.ValueType): Promise<Buffer>;
+  hsetBuffer(key: any, field: any, value: any, callback?: any): void | Promise<Buffer> {
     throw new Error('Method not implemented.');
   }
   hsetnx(
     key: Redis.KeyType,
     field: string,
     value: Redis.ValueType,
-    callback: Redis.Callback<Redis.BooleanResponse>
+    callback: Redis.Callback<Redis.BooleanResponse>,
   ): void;
-  hsetnx(
-    key: Redis.KeyType,
-    field: string,
-    value: Redis.ValueType
-  ): Promise<Redis.BooleanResponse>;
-  hsetnx(
-    key: any,
-    field: any,
-    value: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  hsetnx(key: Redis.KeyType, field: string, value: Redis.ValueType): Promise<Redis.BooleanResponse>;
+  hsetnx(key: any, field: any, value: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  hget(
-    key: Redis.KeyType,
-    field: string,
-    callback: Redis.Callback<string>
-  ): void;
+  hget(key: Redis.KeyType, field: string, callback: Redis.Callback<string>): void;
   hget(key: Redis.KeyType, field: string): Promise<string>;
   hget(key: any, field: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
-  hgetBuffer(
-    key: Redis.KeyType,
-    field: string,
-    callback: Redis.Callback<Buffer>
-  ): void;
+  hgetBuffer(key: Redis.KeyType, field: string, callback: Redis.Callback<Buffer>): void;
   hgetBuffer(key: Redis.KeyType, field: string): Promise<Buffer>;
   hgetBuffer(key: any, field: any, callback?: any): void | Promise<Buffer> {
     throw new Error('Method not implemented.');
@@ -1465,51 +917,19 @@ export class RedisCluster implements Redis.Cluster {
   hmset: Redis.OverloadedKeyedHashCommand<Redis.ValueType, 'OK'>;
   hmget: Redis.OverloadedKeyCommand<Redis.KeyType, string[]>;
   hmgetBuffer: Redis.OverloadedKeyCommand<Redis.KeyType, Buffer[]>;
-  hstrlen(
-    key: Redis.KeyType,
-    field: string,
-    callback: Redis.Callback<number>
-  ): void;
+  hstrlen(key: Redis.KeyType, field: string, callback: Redis.Callback<number>): void;
   hstrlen(key: Redis.KeyType, field: string): Promise<number>;
   hstrlen(key: any, field: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  hincrby(
-    key: Redis.KeyType,
-    field: string,
-    increment: number,
-    callback: Redis.Callback<number>
-  ): void;
-  hincrby(
-    key: Redis.KeyType,
-    field: string,
-    increment: number
-  ): Promise<number>;
-  hincrby(
-    key: any,
-    field: any,
-    increment: any,
-    callback?: any
-  ): void | Promise<number> {
+  hincrby(key: Redis.KeyType, field: string, increment: number, callback: Redis.Callback<number>): void;
+  hincrby(key: Redis.KeyType, field: string, increment: number): Promise<number>;
+  hincrby(key: any, field: any, increment: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  hincrbyfloat(
-    key: Redis.KeyType,
-    field: string,
-    increment: number,
-    callback: Redis.Callback<number>
-  ): void;
-  hincrbyfloat(
-    key: Redis.KeyType,
-    field: string,
-    increment: number
-  ): Promise<number>;
-  hincrbyfloat(
-    key: any,
-    field: any,
-    increment: any,
-    callback?: any
-  ): void | Promise<number> {
+  hincrbyfloat(key: Redis.KeyType, field: string, increment: number, callback: Redis.Callback<number>): void;
+  hincrbyfloat(key: Redis.KeyType, field: string, increment: number): Promise<number>;
+  hincrbyfloat(key: any, field: any, increment: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
   hdel: Redis.OverloadedKeyCommand<Redis.KeyType, number>;
@@ -1528,25 +948,14 @@ export class RedisCluster implements Redis.Cluster {
   hvals(key: any, callback?: any): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
-  hgetall(
-    key: Redis.KeyType,
-    callback: Redis.Callback<Record<string, string>>
-  ): void;
+  hgetall(key: Redis.KeyType, callback: Redis.Callback<Record<string, string>>): void;
   hgetall(key: Redis.KeyType): Promise<Record<string, string>>;
   hgetall(key: any, callback?: any): void | Promise<Record<string, string>> {
     throw new Error('Method not implemented.');
   }
-  hexists(
-    key: Redis.KeyType,
-    field: string,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
+  hexists(key: Redis.KeyType, field: string, callback: Redis.Callback<Redis.BooleanResponse>): void;
   hexists(key: Redis.KeyType, field: string): Promise<Redis.BooleanResponse>;
-  hexists(
-    key: any,
-    field: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  hexists(key: any, field: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
   geoadd(
@@ -1554,21 +963,10 @@ export class RedisCluster implements Redis.Cluster {
     longitude: number,
     latitude: number,
     member: string,
-    callback: Redis.Callback<number>
+    callback: Redis.Callback<number>,
   ): void;
-  geoadd(
-    key: Redis.KeyType,
-    longitude: number,
-    latitude: number,
-    member: string
-  ): Promise<number>;
-  geoadd(
-    key: any,
-    longitude: any,
-    latitude: any,
-    member: any,
-    callback?: any
-  ): void | Promise<number> {
+  geoadd(key: Redis.KeyType, longitude: number, latitude: number, member: string): Promise<number>;
+  geoadd(key: any, longitude: any, latitude: any, member: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
   geodist(
@@ -1576,21 +974,10 @@ export class RedisCluster implements Redis.Cluster {
     member1: string,
     member2: string,
     unit: 'm' | 'km' | 'ft' | 'mi',
-    callback: Redis.Callback<string>
+    callback: Redis.Callback<string>,
   ): void;
-  geodist(
-    key: Redis.KeyType,
-    member1: string,
-    member2: string,
-    unit: 'm' | 'km' | 'ft' | 'mi'
-  ): Promise<string>;
-  geodist(
-    key: any,
-    member1: any,
-    member2: any,
-    unit: any,
-    callback?: any
-  ): void | Promise<string> {
+  geodist(key: Redis.KeyType, member1: string, member2: string, unit: 'm' | 'km' | 'ft' | 'mi'): Promise<string>;
+  geodist(key: any, member1: any, member2: any, unit: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
   geohash: Redis.OverloadedKeyCommand<string, string[]>;
@@ -1601,7 +988,7 @@ export class RedisCluster implements Redis.Cluster {
     latitude: number,
     radius: number,
     unit: 'm' | 'km' | 'ft' | 'mi',
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   georadius(
     key: Redis.KeyType,
@@ -1609,7 +996,7 @@ export class RedisCluster implements Redis.Cluster {
     latitude: number,
     radius: number,
     unit: 'm' | 'km' | 'ft' | 'mi',
-    sort?: 'ASC' | 'DESC'
+    sort?: 'ASC' | 'DESC',
   ): Promise<string[]>;
   georadius(
     key: Redis.KeyType,
@@ -1619,7 +1006,7 @@ export class RedisCluster implements Redis.Cluster {
     unit: 'm' | 'km' | 'ft' | 'mi',
     count: 'COUNT',
     countValue: number,
-    sort?: 'ASC' | 'DESC'
+    sort?: 'ASC' | 'DESC',
   ): Promise<string[]>;
   georadius(
     key: any,
@@ -1629,7 +1016,7 @@ export class RedisCluster implements Redis.Cluster {
     unit: any,
     count?: any,
     countValue?: any,
-    sort?: any
+    sort?: any,
   ): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
@@ -1638,7 +1025,7 @@ export class RedisCluster implements Redis.Cluster {
     member: string,
     radius: number,
     unit: 'm' | 'km' | 'ft' | 'mi',
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   georadiusbymember(
     key: Redis.KeyType,
@@ -1647,13 +1034,13 @@ export class RedisCluster implements Redis.Cluster {
     unit: 'm' | 'km' | 'ft' | 'mi',
     count: 'COUNT',
     countValue: number,
-    callback: Redis.Callback<string[]>
+    callback: Redis.Callback<string[]>,
   ): void;
   georadiusbymember(
     key: Redis.KeyType,
     member: string,
     radius: number,
-    unit: 'm' | 'km' | 'ft' | 'mi'
+    unit: 'm' | 'km' | 'ft' | 'mi',
   ): Promise<string[]>;
   georadiusbymember(
     key: Redis.KeyType,
@@ -1661,7 +1048,7 @@ export class RedisCluster implements Redis.Cluster {
     radius: number,
     unit: 'm' | 'km' | 'ft' | 'mi',
     count: 'COUNT',
-    countValue: number
+    countValue: number,
   ): Promise<string[]>;
   georadiusbymember(
     key: any,
@@ -1670,7 +1057,7 @@ export class RedisCluster implements Redis.Cluster {
     unit: any,
     count?: any,
     countValue?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
@@ -1686,7 +1073,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1701,7 +1088,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1716,7 +1103,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1732,7 +1119,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1744,7 +1131,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1757,7 +1144,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1770,7 +1157,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: Redis.KeyType,
@@ -1784,7 +1171,7 @@ export class RedisCluster implements Redis.Cluster {
     sort?: 'ASC' | 'DESC',
     withCoord?: 'WITHCOORD',
     withDist?: 'WITHDIST',
-    withHash?: 'WITHHASH'
+    withHash?: 'WITHHASH',
   ): Promise<string[] | (string[] | string[][])[]>;
   geosearch(
     key: any,
@@ -1800,57 +1187,33 @@ export class RedisCluster implements Redis.Cluster {
     sort?: any,
     withCoord?: any,
     withDist?: any,
-    withHash?: any
+    withHash?: any,
   ): Promise<string[] | (string[] | string[][])[]> {
     throw new Error('Method not implemented.');
   }
-  incrby(
-    key: Redis.KeyType,
-    increment: number,
-    callback: Redis.Callback<number>
-  ): void;
+  incrby(key: Redis.KeyType, increment: number, callback: Redis.Callback<number>): void;
   incrby(key: Redis.KeyType, increment: number): Promise<number>;
   incrby(key: any, increment: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  incrbyfloat(
-    key: Redis.KeyType,
-    increment: number,
-    callback: Redis.Callback<number>
-  ): void;
+  incrbyfloat(key: Redis.KeyType, increment: number, callback: Redis.Callback<number>): void;
   incrbyfloat(key: Redis.KeyType, increment: number): Promise<number>;
-  incrbyfloat(
-    key: any,
-    increment: any,
-    callback?: any
-  ): void | Promise<number> {
+  incrbyfloat(key: any, increment: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  decrby(
-    key: Redis.KeyType,
-    decrement: number,
-    callback: Redis.Callback<number>
-  ): void;
+  decrby(key: Redis.KeyType, decrement: number, callback: Redis.Callback<number>): void;
   decrby(key: Redis.KeyType, decrement: number): Promise<number>;
   decrby(key: any, decrement: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  getset(
-    key: Redis.KeyType,
-    value: Redis.ValueType,
-    callback: Redis.Callback<string>
-  ): void;
+  getset(key: Redis.KeyType, value: Redis.ValueType, callback: Redis.Callback<string>): void;
   getset(key: Redis.KeyType, value: Redis.ValueType): Promise<string>;
   getset(key: any, value: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
   }
   mset: Redis.OverloadedHashCommand<Redis.ValueType, 'OK'>;
   msetnx: Redis.OverloadedHashCommand<Redis.ValueType, Redis.BooleanResponse>;
-  memory(
-    argument: 'USAGE',
-    key: Redis.KeyType,
-    callback?: Redis.Callback<number>
-  ): Promise<number> {
+  memory(argument: 'USAGE', key: Redis.KeyType, callback?: Redis.Callback<number>): Promise<number> {
     throw new Error('Method not implemented.');
   }
   randomkey(callback: Redis.Callback<string>): void;
@@ -1863,103 +1226,39 @@ export class RedisCluster implements Redis.Cluster {
   select(index: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
-  move(
-    key: Redis.KeyType,
-    db: string,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
+  move(key: Redis.KeyType, db: string, callback: Redis.Callback<Redis.BooleanResponse>): void;
   move(key: Redis.KeyType, db: string): Promise<Redis.BooleanResponse>;
-  move(
-    key: any,
-    db: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  move(key: any, db: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  rename(
-    key: Redis.KeyType,
-    newkey: Redis.KeyType,
-    callback: Redis.Callback<'OK'>
-  ): void;
+  rename(key: Redis.KeyType, newkey: Redis.KeyType, callback: Redis.Callback<'OK'>): void;
   rename(key: Redis.KeyType, newkey: Redis.KeyType): Promise<'OK'>;
   rename(key: any, newkey: any, callback?: any): void | Promise<'OK'> {
     throw new Error('Method not implemented.');
   }
-  renamenx(
-    key: Redis.KeyType,
-    newkey: Redis.KeyType,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
-  renamenx(
-    key: Redis.KeyType,
-    newkey: Redis.KeyType
-  ): Promise<Redis.BooleanResponse>;
-  renamenx(
-    key: any,
-    newkey: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  renamenx(key: Redis.KeyType, newkey: Redis.KeyType, callback: Redis.Callback<Redis.BooleanResponse>): void;
+  renamenx(key: Redis.KeyType, newkey: Redis.KeyType): Promise<Redis.BooleanResponse>;
+  renamenx(key: any, newkey: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  expire(
-    key: Redis.KeyType,
-    seconds: number,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
+  expire(key: Redis.KeyType, seconds: number, callback: Redis.Callback<Redis.BooleanResponse>): void;
   expire(key: Redis.KeyType, seconds: number): Promise<Redis.BooleanResponse>;
-  expire(
-    key: any,
-    seconds: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  expire(key: any, seconds: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  pexpire(
-    key: Redis.KeyType,
-    milliseconds: number,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
-  pexpire(
-    key: Redis.KeyType,
-    milliseconds: number
-  ): Promise<Redis.BooleanResponse>;
-  pexpire(
-    key: any,
-    milliseconds: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  pexpire(key: Redis.KeyType, milliseconds: number, callback: Redis.Callback<Redis.BooleanResponse>): void;
+  pexpire(key: Redis.KeyType, milliseconds: number): Promise<Redis.BooleanResponse>;
+  pexpire(key: any, milliseconds: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  expireat(
-    key: Redis.KeyType,
-    timestamp: number,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
-  expireat(
-    key: Redis.KeyType,
-    timestamp: number
-  ): Promise<Redis.BooleanResponse>;
-  expireat(
-    key: any,
-    timestamp: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  expireat(key: Redis.KeyType, timestamp: number, callback: Redis.Callback<Redis.BooleanResponse>): void;
+  expireat(key: Redis.KeyType, timestamp: number): Promise<Redis.BooleanResponse>;
+  expireat(key: any, timestamp: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
-  pexpireat(
-    key: Redis.KeyType,
-    millisecondsTimestamp: number,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
-  pexpireat(
-    key: Redis.KeyType,
-    millisecondsTimestamp: number
-  ): Promise<Redis.BooleanResponse>;
-  pexpireat(
-    key: any,
-    millisecondsTimestamp: any,
-    callback?: any
-  ): void | Promise<Redis.BooleanResponse> {
+  pexpireat(key: Redis.KeyType, millisecondsTimestamp: number, callback: Redis.Callback<Redis.BooleanResponse>): void;
+  pexpireat(key: Redis.KeyType, millisecondsTimestamp: number): Promise<Redis.BooleanResponse>;
+  pexpireat(key: any, millisecondsTimestamp: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
   }
   keys(pattern: string, callback: Redis.Callback<string[]>): void;
@@ -1972,13 +1271,8 @@ export class RedisCluster implements Redis.Cluster {
   dbsize(callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  auth(
-    username: string,
-    password: string,
-    callback: Redis.Callback<string>
-  ): void;
+  auth(username: string, password: string, callback?: Redis.Callback<string>): void;
   auth(password: string, callback: Redis.Callback<string>): void;
-  auth(username: string, password: string): Promise<string>;
   auth(password: string): Promise<string>;
   auth(username: any, password?: any, callback?: any): void | Promise<string> {
     throw new Error('Method not implemented.');
@@ -2081,10 +1375,7 @@ export class RedisCluster implements Redis.Cluster {
   pttl(key: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
   }
-  persist(
-    key: Redis.KeyType,
-    callback: Redis.Callback<Redis.BooleanResponse>
-  ): void;
+  persist(key: Redis.KeyType, callback: Redis.Callback<Redis.BooleanResponse>): void;
   persist(key: Redis.KeyType): Promise<Redis.BooleanResponse>;
   persist(key: any, callback?: any): void | Promise<Redis.BooleanResponse> {
     throw new Error('Method not implemented.');
@@ -2100,29 +1391,15 @@ export class RedisCluster implements Redis.Cluster {
   config(op: 'REWRITE' | 'RESETSTAT'): Promise<'OK'>;
   config(op: 'REWRITE' | 'RESETSTAT', callback: Redis.Callback<'OK'>): void;
   config(op: 'SET', key: string, value: Redis.ValueType): Promise<'OK'>;
-  config(
-    op: 'SET',
-    key: string,
-    value: Redis.ValueType,
-    callback: Redis.Callback<'OK'>
-  ): void;
-  config(
-    op: any,
-    key?: any,
-    value?: any,
-    callback?: any
-  ): void | Promise<'OK'> | Promise<string[]> {
+  config(op: 'SET', key: string, value: Redis.ValueType, callback: Redis.Callback<'OK'>): void;
+  config(op: any, key?: any, value?: any, callback?: any): void | Promise<'OK'> | Promise<string[]> {
     throw new Error('Method not implemented.');
   }
   subscribe: Redis.OverloadedListCommand<string, number>;
   unsubscribe: Redis.OverloadedCommand<string, number>;
   psubscribe: Redis.OverloadedListCommand<string, number>;
   punsubscribe: Redis.OverloadedCommand<string, number>;
-  publish(
-    channel: string,
-    message: string,
-    callback: Redis.Callback<number>
-  ): void;
+  publish(channel: string, message: string, callback: Redis.Callback<number>): void;
   publish(channel: string, message: string): Promise<number>;
   publish(channel: any, message: any, callback?: any): void | Promise<number> {
     throw new Error('Method not implemented.');
@@ -2155,34 +1432,26 @@ export class RedisCluster implements Redis.Cluster {
     throw new Error('Method not implemented.');
   }
   scan(cursor: string | number): Promise<[string, string[]]>;
-  scan(
-    cursor: string | number,
-    matchOption: 'match' | 'MATCH',
-    pattern: string
-  ): Promise<[string, string[]]>;
+  scan(cursor: string | number, matchOption: 'match' | 'MATCH', pattern: string): Promise<[string, string[]]>;
   scan(
     cursor: string | number,
     matchOption: 'match' | 'MATCH',
     pattern: string,
-    callback: Redis.Callback<[string, string[]]>
+    callback: Redis.Callback<[string, string[]]>,
   ): void;
-  scan(
-    cursor: string | number,
-    countOption: 'COUNT' | 'count',
-    count: number
-  ): Promise<[string, string[]]>;
+  scan(cursor: string | number, countOption: 'COUNT' | 'count', count: number): Promise<[string, string[]]>;
   scan(
     cursor: string | number,
     countOption: 'COUNT' | 'count',
     count: number,
-    callback: Redis.Callback<[string, string[]]>
+    callback: Redis.Callback<[string, string[]]>,
   ): void;
   scan(
     cursor: string | number,
     matchOption: 'match' | 'MATCH',
     pattern: string,
     countOption: 'COUNT' | 'count',
-    count: number
+    count: number,
   ): Promise<[string, string[]]>;
   scan(
     cursor: string | number,
@@ -2190,14 +1459,14 @@ export class RedisCluster implements Redis.Cluster {
     pattern: string,
     countOption: 'COUNT' | 'count',
     count: number,
-    callback: Redis.Callback<[string, string[]]>
+    callback: Redis.Callback<[string, string[]]>,
   ): void;
   scan(
     cursor: string | number,
     countOption: 'COUNT' | 'count',
     count: number,
     matchOption: 'match' | 'MATCH',
-    pattern: string
+    pattern: string,
   ): Promise<[string, string[]]>;
   scan(
     cursor: string | number,
@@ -2205,7 +1474,7 @@ export class RedisCluster implements Redis.Cluster {
     count: number,
     matchOption: 'match' | 'MATCH',
     pattern: string,
-    callback: Redis.Callback<[string, string[]]>
+    callback: Redis.Callback<[string, string[]]>,
   ): void;
   scan(
     cursor: any,
@@ -2213,7 +1482,7 @@ export class RedisCluster implements Redis.Cluster {
     count?: any,
     matchOption?: any,
     pattern?: any,
-    callback?: any
+    callback?: any,
   ): void | Promise<[string, string[]]> {
     throw new Error('Method not implemented.');
   }
@@ -2241,10 +1510,7 @@ export class RedisCluster implements Redis.Cluster {
   xack: Redis.OverloadedKeyCommand<Redis.ValueType, number>;
   xadd: Redis.OverloadedKeyCommand<Redis.ValueType, string>;
   xclaim: Redis.OverloadedKeyCommand<Redis.ValueType, [string, string[]][]>;
-  xautoclaim: Redis.OverloadedSubCommand<
-    Redis.ValueType,
-    [string, [string, string[]][]]
-  >;
+  xautoclaim: Redis.OverloadedSubCommand<Redis.ValueType, [string, [string, string[]][]]>;
   xdel: Redis.OverloadedKeyCommand<string, number>;
   xgroup: Redis.OverloadedSubCommand<Redis.ValueType, number | 'OK'>;
   xinfo: Redis.OverloadedSubCommand<Redis.ValueType, any>;
@@ -2255,14 +1521,8 @@ export class RedisCluster implements Redis.Cluster {
   }
   xpending: Redis.OverloadedKeyCommand<Redis.ValueType, any>;
   xrange: Redis.OverloadedKeyCommand<Redis.ValueType, [string, string[]][]>;
-  xread: Redis.OverloadedListCommand<
-    Redis.ValueType,
-    [string, [string, string[]][]][]
-  >;
-  xreadgroup: Redis.OverloadedKeyCommand<
-    Redis.ValueType,
-    [string, [string, string[]][]][]
-  >;
+  xread: Redis.OverloadedListCommand<Redis.ValueType, [string, [string, string[]][]][]>;
+  xreadgroup: Redis.OverloadedKeyCommand<Redis.ValueType, [string, [string, string[]][]][]>;
   xrevrange: Redis.OverloadedKeyCommand<Redis.ValueType, [string, string[]][]>;
   xtrim: Redis.OverloadedKeyCommand<Redis.ValueType, number>;
 }
