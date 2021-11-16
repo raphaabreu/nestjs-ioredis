@@ -21,7 +21,7 @@
     "url": "git+https://github.com/raphaabreu/nestjs-ioredis.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/raphaabreu/nestjs-ioredis/issues"
   },
