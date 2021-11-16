@@ -26,10 +26,12 @@
     "url": "https://github.com/raphaabreu/nestjs-ioredis/issues"
   },
   "homepage": "https://github.com/raphaabreu/nestjs-ioredis#readme",
-  "peerDependencies": {
-    "@nestjs/common": "^8.0.1",
+  "dependencies": {
     "@types/ioredis": "^4.0.0",
     "ioredis": "^4.0.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^8.0.1"
   },
   "devDependencies": {
     "@nestjs/common": "^8.2.1",
