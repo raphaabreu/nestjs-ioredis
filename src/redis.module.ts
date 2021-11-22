@@ -1,7 +1,8 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { DynamicModule, Global, Module } from '@nestjs/common';
 import { RedisCluster } from './redis.cluster';
 import Redis, { ClusterNode, ClusterOptions } from 'ioredis';
 
+@Global()
 @Module({})
 export class RedisModule {
   static forRoot(nodes?: ClusterNode[], options?: ClusterOptions): DynamicModule {
