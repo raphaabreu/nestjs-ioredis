@@ -81,6 +81,9 @@ export class RedisCluster implements Redis.Cluster {
   defineCommand(name: string, definition: { numberOfKeys?: number; lua?: string }): void {
     throw new Error('Method not implemented.');
   }
+  // @ts-expect-error
+  sendCommand(command: Redis.Command, stream?: unknown): any;
+  // @ts-expect-error
   sendCommand(): void {
     throw new Error('Method not implemented.');
   }
